@@ -12,7 +12,6 @@ public class Hangman {
     HashSet<Character> guesses;
     int strikes = 0;
     boolean gameOver = false;
-    boolean won;
 
     public Hangman() {
         this.rdm = new Random();
@@ -57,7 +56,7 @@ public class Hangman {
         if (this.gameOver) {
             System.out.println("GAME OVER STOP PLAYING BOZO");
             return;
-        };
+        }
         if (!this.validGuess(c)) {
             System.out.println("Invalid guess");
             displayGuesses();
@@ -90,79 +89,86 @@ public class Hangman {
 
 
             case 1:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |                     \n" +
-                        " |                     \n" +
-                        " |                     \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |                    \s
+                         |                    \s
+                         |                    \s
+                        /_\\""");
                 break;
 
             case 2:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |         |           \n" +
-                        " |         |           \n" +
-                        " |                     \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |         |          \s
+                         |         |          \s
+                         |                    \s
+                        /_\\""");
                 break;
 
             case 3:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |        /|           \n" +
-                        " |         |           \n" +
-                        " |                     \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |        /|          \s
+                         |         |          \s
+                         |                    \s
+                        /_\\""");
                 break;
 
             case 4:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |        /|\\         \n" +
-                        " |         |           \n" +
-                        " |                     \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |        /|\\        \s
+                         |         |          \s
+                         |                    \s
+                        /_\\""");
                 break;
 
             case 5:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |        /|\\         \n" +
-                        " |         |           \n" +
-                        " |        /          \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |        /|\\        \s
+                         |         |          \s
+                         |        /         \s
+                        /_\\""");
                 break;
 
             case 6:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |         O           \n" +
-                        " |        /|\\         \n" +
-                        " |         |           \n" +
-                        " |        / \\         \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |         O          \s
+                         |        /|\\        \s
+                         |         |          \s
+                         |        / \\        \s
+                        /_\\""");
                 break;
             default:
-                System.out.println("" +
-                        "-----------|           \n" +
-                        " |         |           \n" +
-                        " |                     \n" +
-                        " |                     \n" +
-                        " |                     \n" +
-                        " |                     \n" +
-                        "/_\\");
+                System.out.println("""
+                        \
+                        -----------|          \s
+                         |         |          \s
+                         |                    \s
+                         |                    \s
+                         |                    \s
+                         |                    \s
+                        /_\\""");
                 break;
         }
 
