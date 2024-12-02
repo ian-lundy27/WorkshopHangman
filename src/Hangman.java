@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 
 public class Hangman {
 
@@ -17,6 +15,20 @@ public class Hangman {
         this.rdm = new Random();
         this.word = wordSelector();
         this.guesses = new HashSet<>();
+    }
+
+    public void pickDifficulty(Scanner in) {
+        System.out.print("Pick a difficulty from 1-3 (adjusts length of word): ");
+        int diff;
+        if (in.hasNextInt()) diff = in.nextInt();
+        else diff = 0;
+        if (diff <= 3 && diff >= 1) {
+            Object[] temp = words.stream().filter(w -> w.length() >= 2 + 2 * diff).toArray();
+            this.word = (String) temp[rdm.nextInt(temp.length)];
+        } else {
+            System.out.println("Using default difficulty.");
+        }
+        in.nextLine();
     }
 
     public String wordSelector(){
@@ -38,7 +50,7 @@ public class Hangman {
     public void displayDetailed() {
         System.out.print("Word:\t\t"); displayWord();
         System.out.print("Guesses:\t"); displayGuesses();
-        System.out.println("Remaining guesses:\t" + this.strikes);
+        System.out.println("Remaining guesses:\t" + (Hangman.MAX_STRIKES - this.strikes));
     }
 
     public boolean winCondition() {
@@ -49,12 +61,12 @@ public class Hangman {
     }
 
     public void displayGuesses() {
-        System.out.println(this.guesses);
+        System.out.println(Arrays.toString(this.guesses.stream().sorted().toArray()));
     }
 
     public void makeGuess(char c) {
         if (this.gameOver) {
-            System.out.println("GAME OVER STOP PLAYING BOZO");
+            System.out.println("This message shouldn't display.");
             return;
         }
         if (!this.validGuess(c)) {
@@ -69,7 +81,7 @@ public class Hangman {
             } else {
                 System.out.println("Correct guess");
             }
-            displayWord();
+            displayDetailed();
         }
         if (checkStrikes())
             gameOver();
@@ -80,14 +92,12 @@ public class Hangman {
     }
 
     public void gameOver() {
-        System.out.println("GAME OVER MAN, GAME OVER");
+        System.out.println("GAME OVER!");
         this.gameOver = true;
     }
 
     public void hangTheMan() {
         switch (this.strikes) {
-
-
             case 1:
                 System.out.println("""
                         \
